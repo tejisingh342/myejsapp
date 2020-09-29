@@ -3,7 +3,7 @@ const db = require("../modules/db");
 var router = express.Router();
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "MyEjsApp" });
+  res.render("yess", { title: "MyEjsApp" });
 });
 
 // GET EMPLOYEE DATA
