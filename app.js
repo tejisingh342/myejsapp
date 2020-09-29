@@ -18,9 +18,24 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public/stylesheets")));
-app.use(express.static(path.join(__dirname, "public/javascripts")));
-app.use(express.static(path.join(__dirname, "public")));
+
+app.locals.__global = {
+  default_header: path.join(
+    __dirname,
+    "views/templates/default_template/header.ejs",
+  ),
+  default_footer: path.join(
+    __dirname,
+    "views/templates/default_template/footer.ejs",
+  ),
+  template: path.join(__dirname, "views/templates"),
+  linkCSS: path.join(__dirname, "views/partials/link_files/css.ejs"),
+  linkJS: path.join(__dirname, "views/partials/link_files/js.ejs"),
+};
+
+app.use("/css", express.static(path.join(__dirname, "public/stylesheets")));
+app.use("/js", express.static(path.join(__dirname, "public/javascripts")));
+app.use("/img", express.static(path.join(__dirname, "public/images")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
