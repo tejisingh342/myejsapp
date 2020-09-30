@@ -12,7 +12,6 @@ router.get("/employeeData", (req, res) => {
     .then((data) => {
       res.render("employee/employee_data", {
         title: "Employee Records",
-        js: ["employee/employee_data"],
         css: ["employee/employee_data"],
         employee_records: data,
       });
