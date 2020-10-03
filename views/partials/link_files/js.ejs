@@ -14,6 +14,8 @@
   crossorigin="anonymous"
 ></script>
 
-<% js.forEach(path => { %>
+<% if (locals.js) { js.forEach(path => { %>
 <script src="js/<%= path %>.js"></script>
-<% }) %>
+<% }) } %>
+
+<script src="js/animejs/anime.min.js"></script>

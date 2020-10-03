@@ -5,6 +5,6 @@
   crossorigin="anonymous"
 />
 
-<% css.forEach(path => { %>
+<% if(locals.css){ css.forEach(path => { %>
 <link rel="stylesheet" href="css/<%= path %>.css" />
-<% }) %>
+<% }) } %>

@@ -1,22 +1,106 @@
 <%- include(__global.default_header) %>
 
-<div class="table-responsive">
-  <table class="table table-hover employeeTable">
-    <thead>
-      <div class="theading">
-        <h1><%= title %></h1>
-      </div>
-      <tr>
-        <th>Name</th>
-        <th>Email-ID</th>
-        <th>E-Type</th>
-        <th>Hourly Rate</th>
-        <th>Total Hour</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<div class="theading">
+  <h1><%= title %></h1>
+  <button class="btn btn-primary">Insert New Record</button>
 </div>
+<table class="table table-hover employeeTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email-ID</th>
+      <th>E-Type</th>
+      <th>Hourly Rate</th>
+      <th>Total Hour</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<!-- Modal Start -->
+
+<div
+  class="modal fade employeeModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myLargeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form autocomple="off">
+          <div class="group">
+            <input type="text" name="name" id="name" required minlength="2" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Name</label>
+          </div>
+          <div class="group">
+            <input type="text" name="email" id="email" required />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email</label>
+          </div>
+          <select class="etype" data-selected="">
+            <option value="-1" selected disabled>Select Employee Type</option>
+            <option value="hourly">Hourly</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+          </select>
+          <div class="group">
+            <input type="text" name="hourlyRate" id="hourlyRate" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Hourly Rate</label>
+          </div>
+          <div class="group">
+            <input type="text" name="totalHour" id="totalHour" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Total Hour</label>
+          </div>
+          <div class="group">
+            <input
+              type="text"
+              name="totalAmount"
+              id="totalAmount"
+              minlength="2"
+            />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Total Amount</label>
+          </div>
+          <div class="buttons">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button class="btn btn-primary" id="insert_record">
+              Insert Record
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal End -->
 
 <%- include(__global.default_footer) %>

@@ -33,8 +33,6 @@ app.locals.__global = {
   linkJS: path.join(__dirname, "views/partials/link_files/js.ejs"),
 };
 
-Object.assign(app.locals, { css: [], js: [] });
-
 app.use("/css", express.static(path.join(__dirname, "public/stylesheets")));
 app.use("/js", express.static(path.join(__dirname, "public/javascripts")));
 app.use("/img", express.static(path.join(__dirname, "public/images")));

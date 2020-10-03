@@ -1,5 +1,15 @@
 $(() => {
   get_records();
+
+  $(".theading button").click(function () {
+    $(".employeeModal").modal("toggle");
+    $(".employeeModal .modal-header .modal-title").text(
+      "Create New Employee Record",
+    );
+  });
+  $(".employeeModal .modal-body form").on("submit", function (e) {
+    e.preventDefault();
+  });
 });
 
 /* GET RECORDS */
@@ -10,26 +20,29 @@ const get_records = () => {
     data: { status: "Oh Yes." },
     dataType: "json",
 
-    success: function (data) {
-      asyncForEach(data, async (record) => {
-        $(".employeeTable tbody")
-          .append(
-            `
+    success: async function (data) {
+      await asyncForEach(data, async (record) => {
+        let hr = record.totalHour > 1 ? "Hours" : "Hour";
+        $(".employeeTable tbody").append(
+          `
           <tr employee_id="${record._id}">
             <td>${record.name}</td>
             <td>${record.email}</td>
             <td>${record.etype}</td>
-            <td>${record.hourlyRate}</td>
-            <td>${record.totalHour}</td>
-            <td>${record.total}</td>
+            <td>Rs. ${record.hourlyRate}/-</td>
+            <td>${record.totalHour} ${hr}</td>
+            <td>Rs. ${record.total}/-</td>
           </tr>
         `,
-          )
-          .find("tr:last-child")
-          .hide()
-          .fadeIn();
-        await waitFor(1000);
+        );
+        $(`.employeeTable tbody tr[employee_id = ${record._id}] td`)
+          .css({ "border-top": "1px solid #dee2e6", "padding-left": "5px" })
+          .animate({ "line-height": "2.5rem", opacity: 1 }, 300);
+        await waitFor(300);
       });
+      /* $(".employeeTable tbody tr td")
+        .css("border-top", "1px solid #dee2e6")
+        .animate({ "line-height": "2.5rem" }, 300); */
     },
   });
 };
@@ -42,11 +55,4 @@ const asyncForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
   }
-};
-const start = async () => {
-  await asyncForEach([1, 2, 3], async (num) => {
-    await waitFor(1000);
-    console.log(num);
-  });
-  console.log("Done");
 };

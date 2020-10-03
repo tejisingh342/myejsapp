@@ -1,1 +1,181 @@
+/* start "EMPLOYEE TABLE" */
+div.theading {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+div.theading button {
+  margin: auto 6px;
+}
+.employeeTable tbody tr td {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 0 0 15px !important;
+  overflow: hidden;
+  border-top: 0;
+}
+.employeeTable tbody tr {
+  position: relative;
+  transition: left 5s linear;
+}
+.employeeTable tbody tr:hover {
+  left: 6px;
+  top: 6px;
+  background: beige;
+  color: brown;
+}
 
+.employeeTable .table td,
+.employeeTable .table th {
+  padding: 0.75rem 15px !important;
+}
+/* end "EMPLOYEE TABLE" */
+
+/* form starting stylings ------------------------------- */
+.employeeModal .modal-content form .group {
+  position: relative;
+  margin-bottom: 35px;
+}
+.employeeModal .modal-content form input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 400px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+.employeeModal .modal-content form input:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+.employeeModal .modal-content form label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.employeeModal .modal-content form input:focus ~ label,
+.employeeModal .modal-content form input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #5264ae;
+}
+
+/* BOTTOM BARS ================================= */
+.employeeModal .modal-content form .bar {
+  position: relative;
+  display: block;
+  width: 400px;
+}
+.employeeModal .modal-content form .bar:before,
+.employeeModal .modal-content form .bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.employeeModal .modal-content form .bar:before {
+  left: 50%;
+}
+.employeeModal .modal-content form .bar:after {
+  right: 50%;
+}
+
+/* active state */
+.employeeModal .modal-content form input:focus ~ .bar:before,
+.employeeModal .modal-content form input:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.employeeModal .modal-content form .highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+.employeeModal .modal-content form input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+/* start extra css for modal */
+.employeeModal .modal-header {
+  margin-bottom: 10px;
+}
+.employeeModal .modal-content form {
+  margin: auto;
+}
+.employeeModal .modal-content form .buttons {
+  float: right;
+}
+/* start select tag css */
+.employeeModal .modal-content form .etype {
+  margin-bottom: 2.2em;
+  padding: 0.25em;
+  border: 0;
+  border-bottom: 2px solid currentcolor;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  border-radius: 0;
+  color: #b9b9b9;
+}
+.employeeModal .modal-content form .etype:focus,
+.employeeModal .modal-content form .etype:active {
+  outline: 0;
+  border-bottom-color: #5264ae;
+}
+/* end select tag css */
+/* end extra css for modal */
