@@ -10,6 +10,30 @@ $(() => {
   $(".employeeModal .modal-body form").on("submit", function (e) {
     e.preventDefault();
   });
+
+  /* start select tag (etype) js */
+  const selected = document.querySelector(".selected");
+  const optionsContainer = document.querySelector(".options-container");
+
+  const optionsList = document.querySelectorAll(".option");
+
+  selected.addEventListener("click", () => {
+    optionsContainer.classList.toggle("active");
+  });
+
+  optionsList.forEach((o) => {
+    o.addEventListener("click", () => {
+      selected.innerHTML =
+        o.querySelector("label").innerHTML +
+        '<i class="fas fa-chevron-down"></i>';
+      optionsContainer.classList.remove("active");
+      selected.setAttribute(
+        "value",
+        o.querySelector("label").innerHTML.replaceAll(" ", "_").toLowerCase(),
+      );
+    });
+  });
+  /* end select tag (etype) js */
 });
 
 /* GET RECORDS */

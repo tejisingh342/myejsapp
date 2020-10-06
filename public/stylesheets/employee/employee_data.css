@@ -7,8 +7,9 @@ div.theading {
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
-div.theading button {
-  margin: auto 6px;
+div.theading button,
+div.theading h1 {
+  margin: 9px 6px;
 }
 .employeeTable tbody tr td {
   line-height: 0;
@@ -18,7 +19,6 @@ div.theading button {
   border-top: 0;
 }
 .employeeTable tbody tr {
-  position: relative;
   transition: left 5s linear;
 }
 .employeeTable tbody tr:hover {
@@ -34,126 +34,9 @@ div.theading button {
 }
 /* end "EMPLOYEE TABLE" */
 
-/* form starting stylings ------------------------------- */
-.employeeModal .modal-content form .group {
-  position: relative;
-  margin-bottom: 35px;
-}
-.employeeModal .modal-content form input {
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 400px;
-  border: none;
-  border-bottom: 1px solid #757575;
-}
-.employeeModal .modal-content form input:focus {
-  outline: none;
-}
-
-/* LABEL ======================================= */
-.employeeModal .modal-content form label {
-  color: #999;
-  font-size: 18px;
-  font-weight: normal;
-  position: absolute;
-  pointer-events: none;
-  left: 5px;
-  top: 10px;
-  transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all;
-}
-
-/* active state */
-.employeeModal .modal-content form input:focus ~ label,
-.employeeModal .modal-content form input:valid ~ label {
-  top: -20px;
-  font-size: 14px;
-  color: #5264ae;
-}
-
-/* BOTTOM BARS ================================= */
-.employeeModal .modal-content form .bar {
-  position: relative;
-  display: block;
-  width: 400px;
-}
-.employeeModal .modal-content form .bar:before,
-.employeeModal .modal-content form .bar:after {
-  content: "";
-  height: 2px;
-  width: 0;
-  bottom: 1px;
-  position: absolute;
-  background: #5264ae;
-  transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all;
-}
-.employeeModal .modal-content form .bar:before {
-  left: 50%;
-}
-.employeeModal .modal-content form .bar:after {
-  right: 50%;
-}
-
-/* active state */
-.employeeModal .modal-content form input:focus ~ .bar:before,
-.employeeModal .modal-content form input:focus ~ .bar:after {
-  width: 50%;
-}
-
-/* HIGHLIGHTER ================================== */
-.employeeModal .modal-content form .highlight {
-  position: absolute;
-  height: 60%;
-  width: 100px;
-  top: 25%;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-/* active state */
-.employeeModal .modal-content form input:focus ~ .highlight {
-  -webkit-animation: inputHighlighter 0.3s ease;
-  -moz-animation: inputHighlighter 0.3s ease;
-  animation: inputHighlighter 0.3s ease;
-}
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
-}
-@-moz-keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
-}
-@keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
-}
-
 /* start extra css for modal */
-.employeeModal .modal-header {
-  margin-bottom: 10px;
+.employeeModal .modal-content {
+  border-radius: 15px;
 }
 .employeeModal .modal-content form {
   margin: auto;
@@ -161,21 +44,105 @@ div.theading button {
 .employeeModal .modal-content form .buttons {
   float: right;
 }
-/* start select tag css */
-.employeeModal .modal-content form .etype {
-  margin-bottom: 2.2em;
-  padding: 0.25em;
-  border: 0;
-  border-bottom: 2px solid currentcolor;
-  font-weight: bold;
-  letter-spacing: 0.15em;
-  border-radius: 0;
-  color: #b9b9b9;
+.headModalClose {
+  margin: auto 0;
+  font-size: 26px;
+  opacity: 0.5;
 }
-.employeeModal .modal-content form .etype:focus,
-.employeeModal .modal-content form .etype:active {
-  outline: 0;
-  border-bottom-color: #5264ae;
+.headModalClose:hover {
+  opacity: 1;
+}
+/* start select tag css */
+.select-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.select-box .options-container {
+  color: #727275;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 22px;
+  overflow: hidden;
+
+  order: 1;
+}
+.select-box .option {
+  border-radius: 320px;
+  padding: 1px 28px !important;
+  background: #2f3640;
+  margin-bottom: 6px;
+}
+.select-box .option:active {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.selected {
+  border-radius: 320px;
+  margin-bottom: 6px;
+  color: #727275;
+  position: relative;
+  background-color: #ebecf0;
+  text-shadow: 1px 1px 0 #fff;
+  box-shadow: -5px -5px 20px #fff, 3px 3px 6px #848484;
+
+  order: 0;
+}
+.selected:active {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.selected i {
+  position: absolute;
+  right: 18px;
+  top: 35%;
+}
+
+.select-box .options-container.active {
+  max-height: 222px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box .options-container.active + .selected i {
+  transform: rotateX(180deg);
+}
+
+.select-box .options-container::-webkit-scrollbar {
+  width: 20px;
+  background: #ebecf0;
+  border-radius: 0 22px 22px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+  background: #aaaaaa;
+  border-radius: 0 22px 22px 0;
+}
+
+.select-box .option,
+.selected {
+  padding: 16px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #ebecf0;
+  text-shadow: 1px 1px 0 #fff;
+  box-shadow: -5px -5px 20px #fff, 3px 3px 6px #848484;
+}
+
+.select-box .option:hover {
+  background: #f7f7f7;
+}
+
+.select-box label {
+  cursor: pointer;
+  margin: 12px auto;
+}
+
+.select-box .option .radio {
+  display: none;
 }
 /* end select tag css */
 /* end extra css for modal */

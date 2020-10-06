@@ -14,13 +14,15 @@ button {
   font-size: 16px;
 }
 
-.text_color {
-  color: #8b8e99;
+div,
+p {
+  color: #babecc;
   text-shadow: 1px 1px 1px #fff;
 }
 
 form {
   padding: 16px;
+  width: 320px;
   margin: 0 auto;
 }
 
@@ -62,13 +64,13 @@ input:focus {
 button {
   color: #61677c;
   font-weight: bold;
-  box-shadow: -5px -5px 20px #fff, 3px 3px 6px #848484;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font-weight: 600;
 }
 button:hover {
-  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #848484;
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
 }
 button:active {
   box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
@@ -90,11 +92,11 @@ button.unit {
 button.unit .icon {
   margin-right: 0;
 }
-/* button.red {
+button.red {
   display: block;
   width: 100%;
   color: #ae1100;
-} */
+}
 
 .input-group {
   display: flex;

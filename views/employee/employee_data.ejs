@@ -2,7 +2,9 @@
 
 <div class="theading">
   <h1><%= title %></h1>
-  <button class="btn btn-primary">Insert New Record</button>
+  <button class="text-primary">
+    <i class="fas fa-plus-square"></i> Insert New Record
+  </button>
 </div>
 <table class="table table-hover employeeTable">
   <thead>
@@ -30,69 +32,118 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"></h5>
-        <button
-          type="button"
-          class="close"
+        <h5 class="modal-title text_color"></h5>
+        <i
+          class="headModalClose text-secondary fas fa-times-circle"
           data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+        ></i>
       </div>
       <div class="modal-body">
-        <form autocomple="off">
-          <div class="group">
-            <input type="text" name="name" id="name" required minlength="2" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Name</label>
-          </div>
-          <div class="group">
-            <input type="text" name="email" id="email" required />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Email</label>
-          </div>
-          <select class="etype" data-selected="">
-            <option value="-1" selected disabled>Select Employee Type</option>
-            <option value="hourly">Hourly</option>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-          </select>
-          <div class="group">
-            <input type="text" name="hourlyRate" id="hourlyRate" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Hourly Rate</label>
-          </div>
-          <div class="group">
-            <input type="text" name="totalHour" id="totalHour" />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Total Hour</label>
-          </div>
-          <div class="group">
+        <form>
+          <label>
+            <input type="text" name="name" id="name" placeholder="Name" />
+          </label>
+          <label>
             <input
-              type="text"
-              name="totalAmount"
-              id="totalAmount"
-              minlength="2"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email Address"
             />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Total Amount</label>
+          </label>
+          <div class="select-box">
+            <div class="options-container">
+              <div class="option">
+                <input
+                  type="radio"
+                  class="radio"
+                  id="automobiles"
+                  name="category"
+                />
+                <label for="automobiles">Automobiles</label>
+              </div>
+
+              <div class="option">
+                <input type="radio" class="radio" id="film" name="category" />
+                <label for="film">Film & Animation</label>
+              </div>
+
+              <div class="option">
+                <input
+                  type="radio"
+                  class="radio"
+                  id="science"
+                  name="category"
+                />
+                <label for="science">Science & Technology</label>
+              </div>
+
+              <div class="option">
+                <input type="radio" class="radio" id="art" name="category" />
+                <label for="art">Art</label>
+              </div>
+
+              <div class="option">
+                <input type="radio" class="radio" id="music" name="category" />
+                <label for="music">Music</label>
+              </div>
+
+              <div class="option">
+                <input type="radio" class="radio" id="travel" name="category" />
+                <label for="travel">Travel & Events</label>
+              </div>
+
+              <div class="option">
+                <input type="radio" class="radio" id="sports" name="category" />
+                <label for="sports">Sports</label>
+              </div>
+
+              <div class="option">
+                <input type="radio" class="radio" id="news" name="category" />
+                <label for="news">News & Politics</label>
+              </div>
+
+              <div class="option">
+                <input
+                  type="radio"
+                  class="radio"
+                  id="tutorials"
+                  name="category"
+                />
+                <label for="tutorials">Tutorials</label>
+              </div>
+            </div>
+
+            <div class="selected">
+              Select Video Category <i class="fas fa-chevron-down"></i>
+            </div>
           </div>
+          <label>
+            <input
+              type="number"
+              name="hourlyRate"
+              id="hourlyRate"
+              placeholder="Hourly Rate"
+            />
+          </label>
+          <label>
+            <input
+              type="number"
+              name="total_hour"
+              id="total_hour"
+              placeholder="Total Hour"
+            />
+          </label>
+          <label>
+            <input type="number" name="total" id="total" placeholder="Total" />
+          </label>
+          <hr />
           <div class="buttons">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
+            <button class="text-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-window-close"></i> Close
             </button>
-            <button class="btn btn-primary" id="insert_record">
-              Insert Record
+            <button class="text-primary" type="button">
+              <i class="fas fa-plus-square"></i> Insert Record
             </button>
           </div>
         </form>

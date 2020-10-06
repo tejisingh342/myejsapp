@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 require("dotenv").config();
+require("./models/db");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -32,6 +33,9 @@ app.locals.__global = {
   linkCSS: path.join(__dirname, "views/partials/link_files/css.ejs"),
   linkJS: path.join(__dirname, "views/partials/link_files/js.ejs"),
 };
+
+app.locals.app_css = ["bootstrap.min", "style"];
+app.locals.app_js = ["jquery.min", "bootstrap.min", "fontawesome.kit"];
 
 app.use("/css", express.static(path.join(__dirname, "public/stylesheets")));
 app.use("/js", express.static(path.join(__dirname, "public/javascripts")));

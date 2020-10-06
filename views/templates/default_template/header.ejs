@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><%= locals.title %></title>
     <link rel="icon" 
-      href="img/<%= (locals.favicon) ? favicon.path_name : "favicon" %>.<%= (locals.favicon) ? favicon.ext : "png" %>" 
+      href="img/icons/<%= (locals.favicon) ? favicon.path_name : "favicon" %>.<%= (locals.favicon) ? favicon.ext : "png" %>" 
         type="image/<%= (locals.favicon) ? favicon.ext : "png" %>" 
           sizes="16x16"> 
-    <link rel="stylesheet" href="css/style.css" />
     <%- include(__global.linkCSS) %> 
   </head>
   <body>
