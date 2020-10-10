@@ -8,7 +8,8 @@ p,
 input,
 select,
 textarea,
-button {
+button,
+tr {
   font-family: "Montserrat", sans-serif;
   letter-spacing: -0.2px;
   font-size: 16px;
@@ -30,23 +31,45 @@ form {
 }
 
 button,
-input {
+input,
+tr {
   border: 0;
   outline: 0 !important;
   font-size: 16px;
   border-radius: 320px;
-  padding: 16px;
-  background-color: #ebecf0;
+  padding: 10px 16px;
+  background-color: #ebecf0 !important;
   text-shadow: 1px 1px 0 #fff;
 }
 
-label {
+.employeeModal .modal-body form > label {
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   width: 100%;
+  position: relative;
+}
+.employeeModal .modal-body form .form_error {
+  position: absolute;
+  top: 10px;
+  right: 11px;
+  font-size: 25px;
+  cursor: pointer;
+  display: none;
+}
+.tooltip > .tooltip-inner {
+  border-radius: 25px;
+  padding: 4px 15px;
+  border: 2px solid red;
+  background: white;
+  color: #dd6767;
+  font-weight: bold;
+}
+.tooltip > .tooltip-arrow {
+  border-left-color: red;
 }
 
-input {
+input,
+tr {
   margin-right: 8px;
   box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
   width: 100%;
@@ -104,4 +127,13 @@ button.unit .icon {
 .input-group label {
   margin: 0;
   flex: 1;
+}
+
+.buttons .submit_button {
+  width: 150px;
+  white-space: nowrap;
+}
+
+.buttons .submit_button img {
+  width: 80px;
 }

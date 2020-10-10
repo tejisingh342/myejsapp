@@ -39,9 +39,15 @@
         ></i>
       </div>
       <div class="modal-body">
-        <form>
+        <form autocomplete="off">
           <label>
             <input type="text" name="name" id="name" placeholder="Name" />
+            <i
+              class="fas fa-exclamation-circle text-danger form_error"
+              id="name_err"
+              data-container="body"
+              data-placement="left"
+            ></i>
           </label>
           <label>
             <input
@@ -49,7 +55,12 @@
               name="email"
               id="email"
               placeholder="Email Address"
-            />
+            /><i
+              class="fas fa-exclamation-circle text-danger form_error"
+              id="email_err"
+              data-container="body"
+              data-placement="left"
+            ></i>
           </label>
           <div class="select-box">
             <div class="options-container">
@@ -57,92 +68,85 @@
                 <input
                   type="radio"
                   class="radio"
-                  id="automobiles"
-                  name="category"
+                  id="hourly"
+                  name="etype"
+                  value="hourly"
                 />
-                <label for="automobiles">Automobiles</label>
+                <label for="hourly">Hourly</label>
               </div>
-
-              <div class="option">
-                <input type="radio" class="radio" id="film" name="category" />
-                <label for="film">Film & Animation</label>
-              </div>
-
               <div class="option">
                 <input
                   type="radio"
                   class="radio"
-                  id="science"
-                  name="category"
+                  id="daily"
+                  name="etype"
+                  value="daily"
                 />
-                <label for="science">Science & Technology</label>
+                <label for="daily">Daily</label>
               </div>
-
-              <div class="option">
-                <input type="radio" class="radio" id="art" name="category" />
-                <label for="art">Art</label>
-              </div>
-
-              <div class="option">
-                <input type="radio" class="radio" id="music" name="category" />
-                <label for="music">Music</label>
-              </div>
-
-              <div class="option">
-                <input type="radio" class="radio" id="travel" name="category" />
-                <label for="travel">Travel & Events</label>
-              </div>
-
-              <div class="option">
-                <input type="radio" class="radio" id="sports" name="category" />
-                <label for="sports">Sports</label>
-              </div>
-
-              <div class="option">
-                <input type="radio" class="radio" id="news" name="category" />
-                <label for="news">News & Politics</label>
-              </div>
-
               <div class="option">
                 <input
                   type="radio"
                   class="radio"
-                  id="tutorials"
-                  name="category"
+                  id="weekly"
+                  name="etype"
+                  value="weekly"
                 />
-                <label for="tutorials">Tutorials</label>
+                <label for="weekly">Weekly</label>
               </div>
             </div>
 
             <div class="selected">
-              Select Video Category <i class="fas fa-chevron-down"></i>
+              Select Employee Type <i class="fas fa-chevron-down down_arrow_select"></i>
+              <i
+              class="fas fa-exclamation-circle text-danger form_error"
+              id="etype_err"
+              data-container="body"
+              data-placement="left"
+            ></i>
             </div>
           </div>
           <label>
             <input
-              type="number"
+              type="text"
               name="hourlyRate"
               id="hourlyRate"
               placeholder="Hourly Rate"
-            />
+            /><i
+              class="fas fa-exclamation-circle text-danger form_error"
+              id="hourlyRate_err"
+              data-container="body"
+              data-placement="left"
+            ></i>
           </label>
           <label>
             <input
-              type="number"
-              name="total_hour"
-              id="total_hour"
+              type="text"
+              name="totalHour"
+              id="totalHour"
               placeholder="Total Hour"
-            />
+            /><i
+              class="fas fa-exclamation-circle text-danger form_error"
+              id="totalHour_err"
+              data-container="body"
+              data-placement="left"
+            ></i>
           </label>
           <label>
-            <input type="number" name="total" id="total" placeholder="Total" />
+            <input
+              type="text"
+              name="total"
+              id="total"
+              placeholder="Total"
+              disabled
+            />
           </label>
           <hr />
           <div class="buttons">
             <button class="text-secondary" data-dismiss="modal" type="button">
               <i class="fas fa-window-close"></i> Close
             </button>
-            <button class="text-primary" type="button">
+            <button class="text-primary submit_button" type="submit">
               <i class="fas fa-plus-square"></i> Insert Record
             </button>
           </div>

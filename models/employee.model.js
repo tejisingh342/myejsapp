@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 
 const employeeSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  etype: String,
-  hourlyRate: Number,
-  totalHour: Number,
-  total: Number,
+  name: {type: String, required:true},
+  email: {type: String, required:true},
+  etype: {type: String, required:true},
+  hourlyRate: {type: Number, required:true},
+  totalHour: {type: Number, required:true},
+  total: {type : Number},
 });
-
-employeeSchema.methods.totalSalaray = () => {
-  return this.hourlyRate * this.totalHour;
-};
 
 mongoose.model("EmployeeData", employeeSchema);
