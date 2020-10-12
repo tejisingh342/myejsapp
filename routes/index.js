@@ -78,7 +78,7 @@ router.post(
         new: true,
         upsert: true,
       })
-        .then((data) => res.status(201).json(data))
+        .then((data) => res.status(200).json(data))
         .catch((err) => res.status(400).json("Error: " + err));
       /* const doc = new Employee(req.body);
       doc
@@ -86,7 +86,7 @@ router.post(
         .then((data) => res.status(201).json(data))
         .catch((err) => res.status(400).json("Error: " + err)); */
     } catch (err) {
-      res.json({ errors: err.array({ onlyFirstError: true }) });
+      res.status(406).json(err.array({ onlyFirstError: true }));
     }
   },
 );

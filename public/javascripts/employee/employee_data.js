@@ -81,7 +81,7 @@ $(() => {
 
       statusCode: {
         // Insert and Update Record Success Status
-        201: async (record) => {
+        200: async (record) => {
           const btn_status = For === "insert" ? "Inserted" : "Updated";
           $(this)
             .find(".buttons .submit_button")
@@ -139,12 +139,9 @@ $(() => {
         },
         // Bad Request
         400: (err) => alert(err.responseJSON),
-      },
-
-      success: (data) => {
-        $(this).find(".form_error").attr("data-original-title", "").hide();
-        const errs = data.errors;
-        if (errs) {
+        406: (errors) => {
+          const errs = errors.responseJSON;
+          $(this).find(".form_error").attr("data-original-title", "").hide();
           errs.forEach((err) => {
             if (err.param === "etype")
               $(this).find(".down_arrow_select").animate({ right: "43px" });
@@ -159,7 +156,7 @@ $(() => {
             .prop("disabled", false)
             .html(btn_status)
             .fadeIn();
-        }
+        },
       },
     });
   });
