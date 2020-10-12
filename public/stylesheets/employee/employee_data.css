@@ -11,6 +11,10 @@ div.theading button,
 div.theading h1 {
   margin: 9px 6px;
 }
+
+.employeeTable thead tr th {
+  padding-left: 1rem;
+}
 .employeeTable tbody tr td {
   line-height: 0;
   opacity: 0;
@@ -29,6 +33,13 @@ div.theading h1 {
 .employeeTable .table td,
 .employeeTable .table th {
   padding: 0.75rem 15px !important;
+}
+.employeeTable tbody tr td button {
+  height: 30px;
+  padding: 0px 17px;
+  margin: 0;
+  vertical-align: middle;
+  line-height: 30px;
 }
 /* end "EMPLOYEE TABLE" */
 
@@ -85,7 +96,7 @@ div.theading h1 {
 .selected {
   border-radius: 320px;
   margin-bottom: 6px;
-  color: #727275;
+  /* color: #727275; */
   position: relative;
   background-color: #ebecf0;
   text-shadow: 1px 1px 0 #fff;
@@ -149,3 +160,12 @@ div.theading h1 {
 }
 /* end select tag css */
 /* end extra css for modal */
+
+/* start view modal css */
+#recordViewModal .modal-body form label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  margin-left: 15px;
+}
+/* end view modal css */

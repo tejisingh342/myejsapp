@@ -1,7 +1,7 @@
 <%- include(__global.default_header) %>
 
 <div class="theading">
-  <h1><%= title %></h1>
+  <h1 class="text-primary"><%= title %></h1>
   <button class="text-primary">
     <i class="fas fa-plus-square"></i> Insert New Record
   </button>
@@ -15,6 +15,7 @@
       <th>Hourly Rate</th>
       <th>Total Hour</th>
       <th>Total</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -72,7 +73,7 @@
                   name="etype"
                   value="hourly"
                 />
-                <label for="hourly">Hourly</label>
+                <label for="hourly">HOURLY</label>
               </div>
               <div class="option">
                 <input
@@ -82,7 +83,7 @@
                   name="etype"
                   value="daily"
                 />
-                <label for="daily">Daily</label>
+                <label for="daily">DAILY</label>
               </div>
               <div class="option">
                 <input
@@ -92,18 +93,19 @@
                   name="etype"
                   value="weekly"
                 />
-                <label for="weekly">Weekly</label>
+                <label for="weekly">WEEKLY</label>
               </div>
             </div>
 
             <div class="selected">
-              Select Employee Type <i class="fas fa-chevron-down down_arrow_select"></i>
+              Select Employee Type
+              <i class="fas fa-chevron-down down_arrow_select"></i>
               <i
-              class="fas fa-exclamation-circle text-danger form_error"
-              id="etype_err"
-              data-container="body"
-              data-placement="left"
-            ></i>
+                class="fas fa-exclamation-circle text-danger form_error"
+                id="etype_err"
+                data-container="body"
+                data-placement="left"
+              ></i>
             </div>
           </div>
           <label>
@@ -146,9 +148,7 @@
             <button class="text-secondary" data-dismiss="modal" type="button">
               <i class="fas fa-window-close"></i> Close
             </button>
-            <button class="text-primary submit_button" type="submit">
-              <i class="fas fa-plus-square"></i> Insert Record
-            </button>
+            <button class="text-primary submit_button" type="submit"></button>
           </div>
         </form>
       </div>
@@ -157,5 +157,72 @@
 </div>
 
 <!-- Modal End -->
+
+<!-- start view modal -->
+<div
+  class="modal fade"
+  id="recordViewModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="recordViewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="recordViewLabel"></h5>
+        <i
+          class="headModalClose text-secondary fas fa-times-circle"
+          data-dismiss="modal"
+        ></i>
+      </div>
+      <div class="modal-body">
+        <form class="p-0">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name">Name</label>
+              <input type="text" class="" id="name" readonly />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="email">Email address</label>
+              <input type="email" class="" id="email" readonly />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="etype">Employee Type</label>
+              <input type="text" class="" id="etype" readonly />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="hourlyRate">Hourly Rate</label>
+              <input type="text" class="" id="hourlyRate" readonly />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="totalHour">Total Hour</label>
+              <input type="text" class="" id="totalHour" readonly />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="total">Total</label>
+              <input type="text" class="" id="total" readonly />
+            </div>
+          </div>
+          <hr />
+          <div class="buttons">
+            <button
+              class="float-right text-secondary"
+              data-dismiss="modal"
+              type="button"
+            >
+              <i class="fas fa-window-close"></i> Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end view modal -->
 
 <%- include(__global.default_footer) %>

@@ -27,18 +27,19 @@ router.get("/employeeData", (req, res, next) => {
   });
 });
 
-// GET EMPLOYEE DATA
+// GET RECORDS
 router.post("/employeeData", (req, res) => {
-  Employee.find().sort({_id:-1})
+  Employee.find()
+    .sort({ _id: -1 })
     .then((data) => {
       res.json(data);
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-//INSERT AND UPDATE
+// INSERT AND UPDATE
 router.post(
-            "/insert_and_update",
+  "/insert_and_update",
   [
     check("name")
       .escape()
@@ -68,18 +69,35 @@ router.post(
   (req, res) => {
     try {
       validationResult(req).throw();
+      console.log("start");
+      console.log(req.body);
       req.body.total = req.body.hourlyRate * req.body.totalHour;
-      const doc = new Employee(req.body);
-      doc.save().then(data => {
-        console.log(data)
-        res.json(data)
-      }).catch(err => {
-        res.json(err)
+      const _id = req.body._id || new mongoose.Types.ObjectId();
+      delete req.body._id;
+      Employee.findOneAndUpdate({ _id }, req.body, {
+        new: true,
+        upsert: true,
       })
+        .then((data) => res.status(201).json(data))
+        .catch((err) => res.status(400).json("Error: " + err));
+      /* const doc = new Employee(req.body);
+      doc
+        .save()
+        .then((data) => res.status(201).json(data))
+        .catch((err) => res.status(400).json("Error: " + err)); */
     } catch (err) {
       res.json({ errors: err.array({ onlyFirstError: true }) });
     }
   },
 );
+
+// GET RECORD
+router.post("/get_record", (req, res) => {
+  Employee.findById(req.body._id)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
 module.exports = router;
