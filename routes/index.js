@@ -19,7 +19,7 @@ router.get("/sample", (req, res) => {
 });
 
 //LOAD "EMPLOYEE DATA" VIEW
-router.get("/employeeData", (req, res, next) => {
+router.get("/employeeData", (req, res) => {
   res.render("employee/employee_data", {
     title: "Employee Records",
     css: ["employee/employee_data"],
@@ -98,6 +98,11 @@ router.post("/get_record", (req, res) => {
       res.json(data);
     })
     .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// DELETE RECORD
+router.post("/delete_record", (req, res) => {
+  res.status(200).json({ status: req.body._id });
 });
 
 module.exports = router;

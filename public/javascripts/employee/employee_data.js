@@ -1,5 +1,6 @@
 window.onload = () => {
   get_records();
+
   let For;
 };
 
@@ -26,6 +27,10 @@ $(() => {
     });
   });
   /* end select tag (etype) js */
+
+  $(".employeeModal").on("show.bs.modal", function () {
+    $(this).find(".modal-body form input#name").on("focus");
+  });
 
   $(".theading button").click(function () {
     form_and_errors_reset();
@@ -170,7 +175,7 @@ const get_records = () => {
     data: { status: "Oh Yes." },
     dataType: "json",
     statusCode: {
-      400: () => alert("Error: Bad Request."),
+      400: (err) => alert(err.responseJSON),
     },
 
     success: async (data) => {
@@ -240,7 +245,7 @@ const edit_record = (employeeID) => {
     data: { _id: employeeID },
     dataType: "json",
     statusCode: {
-      400: () => alert("Error: Bad Request."),
+      400: (err) => alert(err.responseJSON),
     },
 
     success: (record) => {
@@ -272,17 +277,15 @@ const edit_record = (employeeID) => {
 
 // DELETE RECORD
 const delete_record = (employeeID) => {
+  $("#popup_main").fadeIn();
   $.ajax({
     url: "/delete_record",
     method: "post",
     data: { _id: employeeID },
     dataType: "json",
     statusCode: {
-      400: () => alert("Error: Bad Request."),
-    },
-
-    success: (data) => {
-      alert("stauts ok");
+      400: (err) => alert(err.responseJSON),
+      200: (res) => alert(res.status),
     },
   });
 };
