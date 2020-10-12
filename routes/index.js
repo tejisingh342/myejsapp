@@ -65,8 +65,8 @@ router.post(
       .exists()
       .notEmpty()
       .withMessage("Total hour is required.")
-      .isInt()
-      .withMessage("This field must be number."),
+      .isInt({ min: 0, max: 744 })
+      .withMessage("This field must be number in between 0 to 744 ."),
   ],
   (req, res) => {
     try {
