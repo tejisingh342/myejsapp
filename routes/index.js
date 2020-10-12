@@ -47,7 +47,9 @@ router.post(
       .notEmpty()
       .withMessage("Name is required.")
       .isLength({ min: 2, max: 30 })
-      .withMessage("Must be in between 2 to 30 chars"),
+      .withMessage("Must be in between 2 to 30 chars")
+      .isAlpha()
+      .withMessage("Only alphabets allowed."),
     check("email", "Invalid Email Address.")
       .exists()
       .normalizeEmail()
@@ -57,8 +59,8 @@ router.post(
       .exists()
       .notEmpty()
       .withMessage("Hourly rate is required.")
-      .isInt()
-      .withMessage("This field must be number."),
+      .isInt({ min: 1, max: 100000000 })
+      .withMessage("This field must be number in between 1 and 100000000 ."),
     check("totalHour")
       .exists()
       .notEmpty()
