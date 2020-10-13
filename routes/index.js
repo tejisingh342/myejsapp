@@ -44,16 +44,20 @@ router.post(
     check("name")
       .escape()
       .exists()
-      .notEmpty()
-      .withMessage("Name is required.")
+      .trim()
       .isLength({ min: 2, max: 30 })
       .withMessage("Must be in between 2 to 30 chars")
-      .isAlpha()
-      .withMessage("Only alphabets allowed."),
+      .matches(/^([A-Za-z]+\s)+[A-Za-z]+$|^[A-Za-z]+$/)
+      .withMessage("Not Allowed."),
+    // .isAlpha()
+    // .withMessage("Only alphabets allowed.")
     check("email", "Invalid Email Address.")
       .exists()
       .normalizeEmail()
-      .isEmail(),
+      .isEmail()
+      .isLength({ max: 320 })
+      .matches(/^[a-z0-9_?]+@[a-z]+\.[a-z]+$/)
+      .withMessage("Invalid email address."),
     check("etype", "Please select employee type.").exists(),
     check("hourlyRate")
       .exists()
