@@ -32,7 +32,7 @@ $(() => {
     $(this).find(".modal-body form input#name").on("focus");
   });
 
-  $(".theading button").click(function () {
+  $(".theading button").on("click", function () {
     form_and_errors_reset();
     $(".employeeModal .modal-body form .select-box .selected").html(`
           Select Employee Type <i class="fas fa-chevron-down down_arrow_select"></i>
@@ -200,11 +200,11 @@ const get_records = () => {
 
         $(`.employeeTable tbody tr[employee_id = ${record._id}] td`)
           .css({ "padding-left": "5px" })
-          .animate({ "line-height": "2.5rem", opacity: 1 }, 200);
-        await waitFor(200);
+          .animate({ "line-height": "2.5rem", opacity: 1 }, 50);
+        await waitFor(50);
       });
       /* $(".employeeTable tbody tr td")
-        .css("border-top", "1px solid #dee2e6")
+        .css({ "padding-left": "5px" })
         .animate({ "line-height": "2.5rem" }, 300); */
     },
   });
@@ -277,17 +277,40 @@ const edit_record = (employeeID) => {
 
 // DELETE RECORD
 const delete_record = (employeeID) => {
-  $("#popup_main").fadeIn();
-  $.ajax({
-    url: "/delete_record",
-    method: "post",
-    data: { _id: employeeID },
-    dataType: "json",
-    statusCode: {
-      400: (err) => alert(err.responseJSON),
-      200: (res) => alert(res.status),
-    },
-  });
+  $("#popup_main").fadeIn(500);
+  $("#popup_main #popup .buttons button.ok")
+    .off()
+    .on("click", () => {
+      $.ajax({
+        url: "/delete_record",
+        method: "post",
+        data: { id: employeeID },
+        dataType: "json",
+        statusCode: {
+          400: (err) => console.log(err.responseJSON),
+          200: async (res) => {
+              const tr = $(`.employeeTable tbody tr[employee_id = ${res._id}]`);
+              if (res) {
+                $("#popup_main").fadeOut(200);
+                await waitFor(200);
+                const row = tr.children('td')
+                .css({color:"red"});
+                await waitFor(350);
+                $(row).wrapInner('<div />').children()
+                .slideUp(500, () => {
+                  tr.remove()
+                })
+            }
+           
+          },
+        },
+      });
+    });
+  $("#popup_main #popup .buttons button.cancel")
+    .off()
+    .on("click", () => {
+      $("#popup_main").fadeOut();
+    });
 };
 
 //Employee Modal Form and Errors Reset

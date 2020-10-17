@@ -155,8 +155,8 @@ button.unit .icon {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #dfd9d9;
-  box-shadow: 3px 3px 10px 2px white;
+  background: #ebecf0;
+  box-shadow: 3px 3px 10px 2px #fff;
   text-align: center;
 }
 /* end custom popup css */

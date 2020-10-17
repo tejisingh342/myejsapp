@@ -12,7 +12,8 @@
     "prefer-const": "error",
     "eqeqeq": "warn", // warn to use === instead of ==
     "camelcase": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "off",
+    "no-undef": "off"
   },
   "parserOptions": {
     "ecmaVersion": 2018, // Use the latest version ESLint understands

@@ -56,7 +56,7 @@ router.post(
       .normalizeEmail()
       .isEmail()
       .isLength({ max: 320 })
-      .matches(/^[a-z0-9_?]+@[a-z]+\.[a-z]+$/)
+      .matches(/^([A-Za-z0-9]+\.?)+[A-Za-z0-9]+@[A-Za-z0-9]+\.([A-Za-z]{2,5})$/)
       .withMessage("Invalid email address."),
     check("etype", "Please select employee type.").exists(),
     check("hourlyRate")
@@ -99,16 +99,26 @@ router.post(
 
 // GET RECORD
 router.post("/get_record", (req, res) => {
-  Employee.findById(req.body._id)
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((err) => res.status(400).json("Error: " + err));
+  if (mongoose.Types.ObjectId.isValid(req.body._id)) {
+    Employee.findById(req.body._id)
+      .then((data) => {
+        if (data == null) res.status(400).json("No data found..!");
+        else res.json(data);
+      })
+      .catch((err) => res.status(400).json(err));
+  } else res.status(400).json("Please provide correct ID");
 });
 
 // DELETE RECORD
 router.post("/delete_record", (req, res) => {
-  res.status(200).json({ status: req.body._id });
+  if (mongoose.Types.ObjectId.isValid(req.body.id)) {
+    Employee.findByIdAndDelete(req.body.id)
+      .then((data) => {
+        if (data == null) res.status(400).json("Error occur..!");
+        else res.status(200).json(data);
+      })
+      .catch((err) => res.status(400).json(err));
+  } else res.status(400).json("Please provide correct ID");
 });
 
 module.exports = router;
